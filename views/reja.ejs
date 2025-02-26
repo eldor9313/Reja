@@ -13,15 +13,15 @@
   </head>
   <body style="background-color: #a7cfdb">
     <div class="container">
-      <h1 class="display-4 text-center py-1" style="font-weight: bold">
-        PLAN and GOALS
+      <h1 class="display-4 text-center py-3" style="font-weight: bold">
+        PLAN AND GOALS
       </h1>
       <div class="jumbotron p-3 shadow-sm">
         <form id="create-form" action="/create-item" method="POST">
           <div class="d-flex alig-items-center">
             <input
               id="create-field"
-              name="item"
+              name="reja"
               autofocus
               autocomplete="off"
               class="form-control mr-3"
@@ -34,23 +34,38 @@
           </div>
         </form>
       </div>
-      <div class="d-flex">
-        <button
-          type="button"
-          id="clear-btn"
-          class="btn btn-danger"
-          style="border-radius: 20px; margin-right: auto"
+
+      <ul id="item-list" class="list-group pb-5">
+        <% items.map(function(item) { %>
+        <li
+          class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
         >
-          Delete All Plans
-        </button>
-      </div>
+          <span class="item-text"><%=item.reja%></span>
+          <div>
+            <button
+              data-id="<%=item._id%>"
+              class="edit-me btn btn-secondary btn-sm"
+            >
+              Edit
+            </button>
+            <button
+              data-id="<%=item._id%>"
+              class="delete-me btn btn-danger btn-sm"
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <% }) %>
+      </ul>
+
+      <button
+        id="clear-btn"
+        class="btn btn-danger"
+        style="border-radius: 20px; margin-right: auto"
+      >
+        Delete All Plans
+      </button>
     </div>
-    <script>
-      document
-        .getElementById("clear-btn")
-        .addEventListener("click", function () {
-          document.getElementById("create-field").value = "";
-        });
-    </script>
   </body>
 </html>

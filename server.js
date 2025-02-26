@@ -3,10 +3,12 @@ const mongodb = require("mongodb");
 
 // MongoDB connect
 
+// MongoDb ulanishi kerak bo'lgan (URL) => Atlas URL tenglab olyapmiz.
 let db;
 const connectionString =
   "mongodb+srv://imeldor:fa7075898@cluster0.qsot5.mongodb.net/reja";
 
+// bu metod orqali MongoDB-ga ulanmoqdamiz.
 mongodb.connect(
   connectionString,
   {
@@ -14,6 +16,7 @@ mongodb.connect(
     useUnifiedTopology: true,
   },
 
+  // Bu callback parametrimiz shartlari (err & data)
   (err, client) => {
     if (err) console.log("ERROR on connection MongoDB");
     else {
