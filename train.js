@@ -58,7 +58,7 @@ async function maslahatBering(a) {
 // console.log("passed here 0");
 // maslahatBering(65)
 //   .then((data) => {
-//     console.log("javob:", data);
+//     console.log("javob:", data);s
 //   })
 //   .catch((err) => {
 //     console.log("ERROR:", err);
