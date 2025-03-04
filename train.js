@@ -38,21 +38,21 @@ const list = [
 //  async function natijalari bilan node.js ishlay boshlaydi
 // bu single threadimizni umuman band qilmaydigan function
 
-async function maslahatBering(a) {
-  if (typeof a !== "number") throw new Error("insert a number");
-  else if (a <= 20) return list[0];
-  else if (a > 20 && a <= 30) return list[1];
-  else if (a > 30 && a <= 40) return list[2];
-  else if (a > 40 && a <= 50) return list[3];
-  else if (a > 50 && a <= 60) return list[4];
-  else {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(list[5]);
-      }, 5000);
-    });
-  }
-}
+// async function maslahatBering(a) {
+//   if (typeof a !== "number") throw new Error("insert a number");
+//   else if (a <= 20) return list[0];
+//   else if (a > 20 && a <= 30) return list[1];
+//   else if (a > 30 && a <= 40) return list[2];
+//   else if (a > 40 && a <= 50) return list[3];
+//   else if (a > 50 && a <= 60) return list[4];
+//   else {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         resolve(list[5]);
+//       }, 5000);
+//     });
+//   }
+// }
 
 // call via than.catch
 // console.log("passed here 0");
@@ -66,13 +66,53 @@ async function maslahatBering(a) {
 // console.log("passed here 1");
 
 // call via asyn - await
-async function run() {
-  let javob = await maslahatBering(25);
-  console.log(javob);
-  javob = await maslahatBering(70);
-  console.log(javob);
-  javob = await maslahatBering(41);
-  console.log(javob);
+// async function run() {
+//   let javob = await maslahatBering(25);
+//   console.log(javob);
+//   javob = await maslahatBering(70);
+//   console.log(javob);
+//   javob = await maslahatBering(41);
+//   console.log(javob);
+// }
+
+// run();
+
+const moment = require("moment");
+
+class Shop {
+  constructor(non, lagmon, cola) {
+    this.non = non;
+    this.lagmon = lagmon;
+    this.cola = cola;
+  }
+
+  mavjud() {
+    const time = moment().format("HH:mm:ss");
+    console.log(
+      `Soat ${time} da ${this.non} ta non, ${this.lagmon} ta lagmon va ${this.cola} ta cola mavjud!`
+    );
+  }
+
+  sotish(a, b) {
+    if (this[a] >= b) {
+      this[a] -= b;
+      console.log(`${b} ta ${a} sotildi.`);
+    } else {
+      console.log(`Yetarli ${a} yo'q!`);
+    }
+  }
+
+  qabul(a, b) {
+    this[a] += b;
+    console.log(`${b} ta ${a} qabul qilindi.`);
+  }
 }
 
-run();
+const shop = new Shop(4, 5, 2);
+
+shop.mavjud();
+shop.sotish("non", 3);
+shop.qabul("cola", 4);
+setTimeout(() => {
+  shop.mavjud();
+}, 4000);
