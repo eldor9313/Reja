@@ -1,7 +1,6 @@
-// const { response } = require("../app");
-
 console.log("FrontEnd JS ishga tushdi");
 
+// HTML shablon yaratish.
 function itemTemplate(item) {
   return `<li
           class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
@@ -24,17 +23,19 @@ function itemTemplate(item) {
         </li>`;
 }
 
+// Element yaratish va ro‘yxatga qo‘shish.
 let createField = document.getElementById("create-field");
 
 document.getElementById("create-form").addEventListener("submit", function (e) {
-  e.preventDefault();
+  e.preventDefault(); // page yangilanishining oldini oladi.
 
-  axios
+  axios // Serverga yangi reja (reja) jo‘natiladi.
     .post("/create-item", { reja: createField.value })
     .then((response) => {
       document
         .getElementById("item-list")
-        .insertAdjacentHTML("beforeend", itemTemplate(response.data));
+        .insertAdjacentHTML("beforeend", itemTemplate(response.data)); // yangi <li> ro‘yxatning oxiriga qo‘shiladi.
+      // Kiritish maydoni bo‘shatiladi va fokus qayta beriladi
       createField.value = "";
       createField.focus();
     })
@@ -59,4 +60,36 @@ document.addEventListener("click", function (e) {
         });
     }
   }
+
+  // edit operations
+  if (e.target.classList.contains("edit-me")) {
+    let userInput = prompt(
+      "Edit",
+      e.target.parentElement.parentElement.querySelector(".item-text").innerHTML
+    );
+    if (userInput) {
+      axios
+        .post("/edit-item", {
+          id: e.target.getAttribute("data-id"),
+          new_input: userInput,
+        })
+        .then((response) => {
+          console.log(response.data);
+          e.target.parentElement.parentElement.querySelector(
+            ".item-text"
+          ).innerHTML = userInput;
+        })
+        .catch((err) => {
+          console.log("Please try again!");
+        });
+    }
+  }
+});
+
+// all delete
+document.getElementById("clean-all").addEventListener("click", function () {
+  axios.post("/delete-all", { delete_all: true }).then((response) => {
+    alert(response.data.state);
+    document.location.reload();
+  });
 });
