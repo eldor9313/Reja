@@ -88,8 +88,10 @@ document.addEventListener("click", function (e) {
 
 // all delete
 document.getElementById("clean-all").addEventListener("click", function () {
-  axios.post("/delete-all", { delete_all: true }).then((response) => {
-    alert(response.data.state);
-    document.location.reload();
-  });
+  if (confirm("Are you sure to delete!")) {
+    axios.post("/delete-all", { delete_all: true }).then((response) => {
+      // alert(response.data.state);
+      document.location.reload();
+    });
+  }
 });

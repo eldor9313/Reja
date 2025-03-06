@@ -1,12 +1,12 @@
-console.log("Jack Ma maslahatlari");
-const list = [
-  "yaxshi talaba bo'ling", // 0-20
-  "togri boshliq tanlang va koproq hato qiling", // 20-30
-  "ozingizga ishlashingizni boshlang", // 30-40
-  "siz kuchli bo'lgan narsalarni qiling", //  40-50
-  "yoshlarga investitsiya qiling", // 50-60
-  "endi dam oling, foydasi yo'q endi", // 60
-];
+// console.log("Jack Ma maslahatlari");
+// const list = [
+//   "yaxshi talaba bo'ling", // 0-20
+//   "togri boshliq tanlang va koproq hato qiling", // 20-30
+//   "ozingizga ishlashingizni boshlang", // 30-40
+//   "siz kuchli bo'lgan narsalarni qiling", //  40-50
+//   "yoshlarga investitsiya qiling", // 50-60
+//   "endi dam oling, foydasi yo'q endi", // 60
+// ];
 
 // CALLBACK =>
 
@@ -77,42 +77,53 @@ const list = [
 
 // run();
 
-const moment = require("moment");
+// TASK  ( C )
+// const moment = require("moment");
 
-class Shop {
-  constructor(non, lagmon, cola) {
-    this.non = non;
-    this.lagmon = lagmon;
-    this.cola = cola;
-  }
+// class Shop {
+//   constructor(non, lagmon, cola) {
+//     this.non = non;
+//     this.lagmon = lagmon;
+//     this.cola = cola;
+//   }
 
-  mavjud() {
-    const time = moment().format("HH:mm:ss");
-    console.log(
-      `Soat ${time} da ${this.non} ta non, ${this.lagmon} ta lagmon va ${this.cola} ta cola mavjud!`
-    );
-  }
+//   mavjud() {
+//     const time = moment().format("HH:mm:ss");
+//     console.log(
+//       `Soat ${time} da ${this.non} ta non, ${this.lagmon} ta lagmon va ${this.cola} ta cola mavjud!`
+//     );
+//   }
 
-  sotish(a, b) {
-    if (this[a] >= b) {
-      this[a] -= b;
-      console.log(`${b} ta ${a} sotildi.`);
-    } else {
-      console.log(`Yetarli ${a} yo'q!`);
-    }
-  }
+//   sotish(a, b) {
+//     if (this[a] >= b) {
+//       this[a] -= b;
+//       console.log(`${b} ta ${a} sotildi.`);
+//     } else {
+//       console.log(`Yetarli ${a} yo'q!`);
+//     }
+//   }
 
-  qabul(a, b) {
-    this[a] += b;
-    console.log(`${b} ta ${a} qabul qilindi.`);
-  }
+//   qabul(a, b) {
+//     this[a] += b;
+//     console.log(`${b} ta ${a} qabul qilindi.`);
+//   }
+// }
+
+// const shop = new Shop(4, 5, 2);
+
+// shop.mavjud();
+// shop.sotish("non", 3);
+// shop.qabul("cola", 4);
+// setTimeout(() => {
+//   shop.mavjud();
+// }, 4000);
+
+// TASK D
+// ... spread operatorda stringni harflarga ajratib, sort() orqali alifbo bo'yicha tartiblaymiz
+// va join() bilan string holatda birlashtirib === taqqoslaymiz.
+function checkContent(eldor, toby) {
+  return [...eldor].sort().join("") === [...toby].sort().join("");
 }
 
-const shop = new Shop(4, 5, 2);
-
-shop.mavjud();
-shop.sotish("non", 3);
-shop.qabul("cola", 4);
-setTimeout(() => {
-  shop.mavjud();
-}, 4000);
+console.log(checkContent("mitgroup", "gmtiprou"));
+console.log(checkContent("mit26", "52tim"));
