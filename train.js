@@ -121,9 +121,16 @@
 // TASK D
 // ... spread operatorda stringni harflarga ajratib, sort() orqali alifbo bo'yicha tartiblaymiz
 // va join() bilan string holatda birlashtirib === taqqoslaymiz.
-function checkContent(eldor, toby) {
-  return [...eldor].sort().join("") === [...toby].sort().join("");
+// function checkContent(eldor, toby) {
+//   return [...eldor].sort().join("") === [...toby].sort().join("");
+// }
+
+// console.log(checkContent("mitgroup", "gmtiprou"));
+// console.log(checkContent("mit26", "52tim"));
+
+// TASK E
+function getReverse(hello) {
+  return [...hello].reverse().join("");
 }
 
-console.log(checkContent("mitgroup", "gmtiprou"));
-console.log(checkContent("mit26", "52tim"));
+console.log(getReverse("hello"));

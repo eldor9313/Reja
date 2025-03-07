@@ -28,7 +28,7 @@ let createField = document.getElementById("create-field");
 
 document.getElementById("create-form").addEventListener("submit", function (e) {
   e.preventDefault(); // page yangilanishining oldini oladi.
-
+  // REST API
   axios // Serverga yangi reja (reja) jo‘natiladi.
     .post("/create-item", { reja: createField.value })
     .then((response) => {
