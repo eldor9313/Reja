@@ -134,3 +134,9 @@ function getReverse(hello) {
 }
 
 console.log(getReverse("hello"));
+
+getReverse = (hello) => {
+  return [...hello].reverse().join("");
+};
+
+console.log(getReverse("dlroW olleH"));
